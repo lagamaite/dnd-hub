@@ -1,0 +1,4 @@
+flask
+jinja2==3.0.3
+requests
+cors
