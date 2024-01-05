@@ -3,3 +3,5 @@ jinja2==3.0.3
 requests
 cors
 datetime
+flask_sqlalchemy
+pymysql
