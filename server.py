@@ -37,7 +37,7 @@ def home():
     return render_template("index.html")
     
 @app.route("/create", methods=['GET', 'POST'])
-def add_books():
+def create_note():
     if request.method == 'POST':
         note_title = request.form.get('title')
         note_description = request.form.get('description')
