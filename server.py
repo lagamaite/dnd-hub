@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request    
+from flask import Flask, render_template, request, redirect, url_for    
 from flask_sqlalchemy import SQLAlchemy
 import jinja2  
 import json
@@ -33,8 +33,8 @@ def home():
     # print(n.title) # prints "Title" in terminal
     # print(str(n.note_date)) # prints current date in terminal
 
-    #notes_list = Note.query.all()
-    return render_template("index.html")
+    notes_list = Note.query.all()
+    return render_template("index.html", notes_list=notes_list)
     
 @app.route("/create", methods=['GET', 'POST'])
 def create_note():
@@ -48,7 +48,7 @@ def create_note():
         )
         db.session.add(new_note)
         db.session.commit()
-        #return redirect(url_for('home'))
+        return redirect(url_for('home'))
         print(request.json)
  
     return render_template("index.html")
