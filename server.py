@@ -3,7 +3,8 @@ from flask_sqlalchemy import SQLAlchemy
 import jinja2  
 import json
 from base import db
-from note import Note 
+from note import Note
+from stats import Stats 
 # Creating Flask app
 app = Flask(__name__)
 
@@ -35,6 +36,12 @@ def home():
 
     notes_list = Note.query.all()
     return render_template("index.html", notes_list=notes_list)
+
+@app.route("/stats_page")
+def stat_arrays():
+
+    stats_list = Stats.query.all()
+    return render_template("stat_arrays.html", stats_list=stats_list)
     
 @app.route("/create", methods=['GET', 'POST'])
 def create_note():
@@ -52,6 +59,33 @@ def create_note():
         print(request.json)
  
     return render_template("index.html")
+
+@app.route("/create_stats", methods=['GET', 'POST'])
+def create_stats():
+    if request.method == 'POST':
+        character = request.form.get('character')
+        strength = request.form.get('strength')
+        dexterity = request.form.get('dexterity')
+        constitution = request.form.get('constitution')
+        intelligence = request.form.get('intelligence')
+        wisdom = request.form.get('wisdom')
+        charisma = request.form.get('charisma')
+ 
+        new_stats = Stats(
+            character = character,
+            strength=strength,
+            dexterity=dexterity,
+            constitution=constitution,
+            intelligence=intelligence,
+            wisdom=wisdom,
+            charisma=charisma
+        )
+        db.session.add(new_stats)
+        db.session.commit()
+        return redirect(url_for('stat_arrays'))
+        print(request.json)
+ 
+    return render_template("stat_arrays.html")
     
 if __name__ == "__main__":
     create_db()

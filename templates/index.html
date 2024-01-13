@@ -1,13 +1,60 @@
 <!DOCTYPE html>
 
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Test</title>
-  </head>
-  <body>
-    <h1> DnD Hub </h1>
 
-    <p> Test </p>
-  </body>
+ 
+<h1 class="text-center my-5">DnD Hub</h1>
+<div class="container">
+
+  <form action="/create" method="POST">
+<div class="mb-3">
+  <label for="title" class="form-label">Title</label>
+  <input type="text" class="form-control" name="title" id="title" placeholder="Title" required>
+</div>
+<div class="mb-3">
+  <label for="description" class="form-label">Description</label>
+  <input type="text" class="form-control" name="description" id="description" placeholder="Description">
+</div>
+  <button type="submit" class="btn mt-3 btn-outline-success">Create Note</button>
+  </form>
+  </div>
+
+  <!-- Button sends to Stats Page -->
+  <br>
+  <form action="/stats_page" method="GET">  
+    <button type="submit" class="btn mt-3 btn-outline-success">Stats Page</button>
+  </form>
+
+
+  <h1 class="text-center my-5">Notes List</h1>
+  <div class="container d-flex justify-content-center align-items-center">
+
+  </div>
+  <div class="container">
+      <table class="table table-dark table-striped">
+          <thead>
+          <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Title</th>
+              <th scope="col">Description</th>
+          </tr>
+          </thead>
+          {% if not notes_list%}
+          <div class="text-center">
+              <h3 class="my-5">No Records to Display!</h3>
+          </div>
+          {% else %}
+          <tbody>
+          {% for data in notes_list %}
+          <tr>
+              <th scope="row">{{data.id}}</th>
+              <td>{{data.title}}</td>
+              <td>{{data.description}}</td>
+          </tr>
+          {% endfor %}
+          </tbody>
+          {% endif %}
+      </table>
+  </div>
+
 </html>
