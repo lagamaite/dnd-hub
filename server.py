@@ -17,7 +17,7 @@ db_name = "dndhub_db"
 # Configuring database URI
 app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+pymysql://{user}:{pin}@{host}/{db_name}"
  
-# Disable modification trackingstat
+# Disable modification tracking
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Initializing Flask app with SQLAlchemy
