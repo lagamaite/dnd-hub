@@ -17,7 +17,7 @@ db_name = "dndhub_db"
 # Configuring database URI
 app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+pymysql://{user}:{pin}@{host}/{db_name}"
  
-# Disable modification tracking
+# Disable modification trackingstat
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Initializing Flask app with SQLAlchemy
@@ -51,8 +51,9 @@ def create_note():
  
         new_note = Note(
             title=note_title,
-            description=note_description
+            description=note_description,
         )
+        new_note.note_date = new_note.note_date
         db.session.add(new_note)
         db.session.commit()
         return redirect(url_for('home'))

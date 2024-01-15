@@ -37,6 +37,7 @@
               <th scope="col">ID</th>
               <th scope="col">Title</th>
               <th scope="col">Description</th>
+              <th scope="col">Date Created</th>
           </tr>
           </thead>
           {% if not notes_list%}
@@ -50,6 +51,7 @@
               <th scope="row">{{data.id}}</th>
               <td>{{data.title}}</td>
               <td>{{data.description}}</td>
+              <td>{{data.note_date}}</td>
           </tr>
           {% endfor %}
           </tbody>
