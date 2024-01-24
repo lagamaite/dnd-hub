@@ -56,15 +56,6 @@ def display_all_stats():
             message="Invalid user id.", status_code=400
         )
     return jsonify([stat.as_dict() for stat in stats_all])
-    # return {
-    #     "character": "mycharacter",
-    #     "strength": 1,
-    #     "dexterity": 1,
-    #     "constitution": 1,
-    #     "intelligence": 1,
-    #     "wisdom": 1,
-    #     "charisma": 1
-    # }
     
 @app.route("/create", methods=['GET', 'POST'])
 def create_note():
