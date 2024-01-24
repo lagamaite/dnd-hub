@@ -17,3 +17,5 @@ While MySQL Workbench and flask server is still running, open up another new ter
 `npm start`
 
 Browser should automatically open to http://localhost:3000/ and display React app
+
+![Diagram](dnd-hub-arch-v1.png)
