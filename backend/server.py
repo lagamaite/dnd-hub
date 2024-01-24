@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for    
+from flask import Flask, render_template, request, redirect, url_for, jsonify    
 from flask_sqlalchemy import SQLAlchemy
 import jinja2  
 import json
@@ -37,11 +37,34 @@ def home():
     notes_list = Note.query.all()
     return render_template("index.html", notes_list=notes_list)
 
+
+
 @app.route("/stats_page")
 def stat_arrays():
 
     stats_list = Stats.query.all()
     return render_template("stat_arrays.html", stats_list=stats_list)
+
+
+@app.route("/stats_display")
+def display_all_stats():
+
+    try:
+        stats_all = Stats.get_all_stats()
+    except TypeError:
+        return bad_request(
+            message="Invalid user id.", status_code=400
+        )
+    return jsonify([stat.as_dict() for stat in stats_all])
+    # return {
+    #     "character": "mycharacter",
+    #     "strength": 1,
+    #     "dexterity": 1,
+    #     "constitution": 1,
+    #     "intelligence": 1,
+    #     "wisdom": 1,
+    #     "charisma": 1
+    # }
     
 @app.route("/create", methods=['GET', 'POST'])
 def create_note():

@@ -19,3 +19,23 @@ class Stats(db.Model):
         self.intelligence = intelligence
         self.wisdom = wisdom
         self.charisma = charisma
+
+
+    def as_dict(self):
+
+        return {
+            "character": self.character,
+            "strength": self.strength,
+            "dexterity": self.dexterity,
+            "constitution": self.constitution,
+            "intelligence": self.intelligence,
+            "wisdom": self.wisdom,
+            "charisma": self.charisma
+        }
+
+    @staticmethod
+    def get_all_stats():
+        #returns stats of every character
+        return Stats.query.all()
+    
+    #TODO: get stats of specific character
