@@ -14,6 +14,8 @@ While MySQL Workbench and flask server is still running, open up another new ter
 
 `cd frontend`
 
+Install node_modules: `npm install`
+
 `npm start`
 
 Browser should automatically open to http://localhost:3000/ and display React app
