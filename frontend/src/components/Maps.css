@@ -1,0 +1,22 @@
+.Map {
+    text-align: center;
+  }
+  
+.Map-Header {
+    background-color: #0b2456;
+    min-height: 20vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: rgb(209, 13, 13);
+  }
+  .Map-Image {
+    width: auto; /* Adjust the width as needed */
+   height: 600px; /* Maintain aspect ratio */
+   margin: 10px;
+   border: 2px solid #333;
+   border-radius: 8px;
+    transition: transform 0.3s ease-in-out;
+  }
